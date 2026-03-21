@@ -1,3 +1,9 @@
+---
+name: mdlc-init
+description: Bootstrap MDLC MCP Gateway connection — validates API key, configures MCP server, reports tier
+user-invocable: true
+---
+
 # /mdlc-init — Bootstrap MDLC Gateway Connection
 
 Set up Claude Code to work with the MDLC MCP Gateway (mcp.mdlc.ai).

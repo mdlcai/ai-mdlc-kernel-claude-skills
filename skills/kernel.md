@@ -1,3 +1,9 @@
+---
+name: kernel
+description: Search and retrieve MDLC kernel documentation via the MCP gateway
+user-invocable: true
+---
+
 # /kernel — Query MDLC Kernel Documentation
 
 Search and retrieve documentation from the MDLC kernel via the MCP gateway.

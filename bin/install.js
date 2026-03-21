@@ -5,9 +5,13 @@ const path = require('path');
 const os = require('os');
 
 const SKILLS_DIR = path.join(__dirname, '..', 'skills');
-const TARGET_DIR = path.join(os.homedir(), '.claude', 'commands');
+const TARGET_DIR = path.join(os.homedir(), '.claude', 'skills');
 
-const ALL_SKILLS = ['mdlc-init', 'research', 'kernel', 'deploy', 'cyberops', 'report'];
+const ALL_SKILLS = [
+  'mdlc-init', 'research', 'kernel', 'deploy', 'cyberops', 'report',
+  'architect', 'mcp-builder', 'edge-expert', 'secure-code',
+  'supabase', 'test', 'optimize', 'migrate',
+];
 
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) {
@@ -15,32 +19,53 @@ function ensureDir(dir) {
   }
 }
 
+function findSkillSource(name) {
+  // New format: skills/<name>/SKILL.md
+  const dirFormat = path.join(SKILLS_DIR, name, 'SKILL.md');
+  if (fs.existsSync(dirFormat)) return { src: dirFormat, format: 'dir' };
+
+  // Legacy format: skills/<name>.md
+  const flatFormat = path.join(SKILLS_DIR, `${name}.md`);
+  if (fs.existsSync(flatFormat)) return { src: flatFormat, format: 'flat' };
+
+  return null;
+}
+
+function isInstalled(name) {
+  return fs.existsSync(path.join(TARGET_DIR, name, 'SKILL.md'));
+}
+
 function listSkills() {
   console.log('\nAvailable MDLC skills:\n');
-  for (const name of ALL_SKILLS) {
-    const file = path.join(SKILLS_DIR, `${name}.md`);
-    const exists = fs.existsSync(file);
-    const installed = fs.existsSync(path.join(TARGET_DIR, `${name}.md`));
-    const status = installed ? ' [installed]' : '';
-    console.log(`  /${name}${status}${exists ? '' : ' (missing)'}`);
+  console.log('  Core:');
+  for (const name of ALL_SKILLS.slice(0, 6)) {
+    const source = findSkillSource(name);
+    const status = isInstalled(name) ? ' [installed]' : '';
+    console.log(`    /${name}${status}${source ? '' : ' (missing)'}`);
+  }
+  console.log('\n  Expert:');
+  for (const name of ALL_SKILLS.slice(6)) {
+    const source = findSkillSource(name);
+    const status = isInstalled(name) ? ' [installed]' : '';
+    console.log(`    /${name}${status}${source ? '' : ' (missing)'}`);
   }
   console.log(`\nInstall dir: ${TARGET_DIR}\n`);
 }
 
 function installSkills(names) {
-  ensureDir(TARGET_DIR);
   let installed = 0;
 
   for (const name of names) {
-    const src = path.join(SKILLS_DIR, `${name}.md`);
-    const dest = path.join(TARGET_DIR, `${name}.md`);
-
-    if (!fs.existsSync(src)) {
+    const source = findSkillSource(name);
+    if (!source) {
       console.error(`  Skill not found: ${name}`);
       continue;
     }
 
-    fs.copyFileSync(src, dest);
+    const destDir = path.join(TARGET_DIR, name);
+    ensureDir(destDir);
+    const dest = path.join(destDir, 'SKILL.md');
+    fs.copyFileSync(source.src, dest);
     console.log(`  Installed /${name} -> ${dest}`);
     installed++;
   }
@@ -87,12 +112,22 @@ Usage:
   npx @mdlc/claude-skills update            Update all installed skills
   npx @mdlc/claude-skills list              List available skills
 
-Skills:
+Core Skills:
   /mdlc-init    Bootstrap MCP gateway connection
   /research     Generate RESEARCH.md blueprints
   /kernel       Query MDLC kernel documentation
   /deploy       Deploy Cloudflare Workers
   /cyberops     Launch security scans (SOLO+)
   /report       Generate scan PDF reports (SOLO+)
+
+Expert Skills:
+  /architect    System architecture from RESEARCH.md
+  /mcp-builder  Build custom MCP servers
+  /edge-expert  Cloudflare Workers patterns
+  /secure-code  Security review (OWASP top 10)
+  /supabase     Database design & RLS policies
+  /test         Test generation (MDLC quality gates)
+  /optimize     Performance audit & optimization
+  /migrate      Database & API migrations
 `);
 }

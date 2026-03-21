@@ -1,3 +1,9 @@
+---
+name: deploy
+description: Deploy one or all MDLC Cloudflare Workers to production
+user-invocable: true
+---
+
 # /deploy — Deploy MDLC Workers
 
 Deploy one or all MDLC Cloudflare Workers to production.

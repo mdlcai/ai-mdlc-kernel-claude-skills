@@ -1,3 +1,9 @@
+---
+name: research
+description: Generate a structured RESEARCH.md blueprint following the MDLC methodology
+user-invocable: true
+---
+
 # /research — RESEARCH.md Blueprint Generator
 
 Generate a structured RESEARCH.md blueprint following the MDLC methodology.

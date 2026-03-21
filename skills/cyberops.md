@@ -1,3 +1,9 @@
+---
+name: cyberops
+description: Launch and monitor CyberOps security scans from Claude Code
+user-invocable: true
+---
+
 # /cyberops — Security Scan Launcher
 
 Launch and monitor CyberOps security scans from Claude Code.

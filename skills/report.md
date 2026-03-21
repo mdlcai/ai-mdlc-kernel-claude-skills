@@ -1,3 +1,9 @@
+---
+name: report
+description: Generate and download a PDF security report for a completed CyberOps scan
+user-invocable: true
+---
+
 # /report — Generate CyberOps PDF Report
 
 Generate and download a PDF security report for a completed CyberOps scan.
