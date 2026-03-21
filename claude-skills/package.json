@@ -1,0 +1,27 @@
+{
+  "name": "@mdlc/claude-skills",
+  "version": "1.0.0",
+  "description": "Claude Code skills for the MDLC platform — install slash commands for project blueprints, kernel docs, deployment, and security scanning",
+  "license": "MIT",
+  "bin": {
+    "mdlc-skills": "./bin/install.js"
+  },
+  "files": [
+    "bin/",
+    "skills/"
+  ],
+  "keywords": [
+    "claude-code",
+    "mdlc",
+    "mcp",
+    "ai",
+    "skills"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ai-mdlc-kernel/claude-skills"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
