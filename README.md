@@ -8,7 +8,7 @@ Claude Code slash commands for the [MDLC.AI](https://mdlc.ai) platform — the M
 npx @mdlc/claude-skills install
 ```
 
-This installs all MDLC skills to `~/.claude/commands/`, making them available as slash commands in Claude Code.
+This installs all 14 MDLC skills to `~/.claude/skills/`, making them available as slash commands in Claude Code.
 
 ## Why Use MDLC Skills?
 
@@ -18,8 +18,9 @@ MDLC skills give your AI coding agent structured workflows for building software
 - **Stay on methodology** — `/kernel` pulls the right MDLC docs into your conversation
 - **Ship confidently** — `/deploy` runs pre-flight checks before deploying
 - **Scan for vulnerabilities** — `/cyberops` launches security scans without leaving your terminal
+- **Design with expertise** — `/architect`, `/edge-expert`, `/supabase` bring domain knowledge into every decision
 
-## Skills
+## Core Skills
 
 | Skill | Tier | Description |
 |-------|------|-------------|
@@ -30,11 +31,25 @@ MDLC skills give your AI coding agent structured workflows for building software
 | `/cyberops` | SOLO+ | Launch and monitor CyberOps security scans |
 | `/report` | SOLO+ | Generate PDF reports from scan findings |
 
+## Expert Skills
+
+| Skill | Tier | Description |
+|-------|------|-------------|
+| `/architect` | FREE | System architecture from RESEARCH.md using MDLC BUILD.md methodology |
+| `/mcp-builder` | SOLO+ | Build custom MCP servers — scaffolding, auth, tool definitions |
+| `/edge-expert` | FREE | Cloudflare Workers patterns — KV, R2, Durable Objects, caching, queues |
+| `/secure-code` | FREE | Secure coding review — OWASP top 10, auth patterns, input validation |
+| `/supabase` | FREE | Database schema design, RLS policies, migrations, edge functions |
+| `/test` | FREE | Generate tests following MDLC quality gates — unit, integration, API |
+| `/optimize` | SOLO+ | Performance audit — bundle size, cold starts, edge caching, query tuning |
+| `/migrate` | SOLO+ | Database migrations, API versioning, zero-downtime deploys |
+
 ## Commands
 
 ```bash
-npx @mdlc/claude-skills install              # Install all skills
+npx @mdlc/claude-skills install              # Install all 14 skills
 npx @mdlc/claude-skills install research      # Install a specific skill
+npx @mdlc/claude-skills install architect     # Install an expert skill
 npx @mdlc/claude-skills update                # Update all skills to latest
 npx @mdlc/claude-skills list                  # List available skills
 ```
@@ -46,9 +61,9 @@ npx @mdlc/claude-skills list                  # List available skills
    ```bash
    npx @mdlc/claude-skills install
    ```
-3. **Open Claude Code** in your project and run `/mdlc-init`
-4. **Enter your API key** — the skill configures your MCP gateway connection automatically
-5. **Start building:** `/research`, `/kernel`, `/deploy`, `/cyberops`
+3. **Restart Claude Code** (skills are loaded at startup)
+4. **Run `/mdlc-init`** and enter your API key — it configures the MCP gateway connection automatically
+5. **Start building:** `/research`, `/kernel`, `/deploy`, `/architect`, etc.
 
 ## MCP Gateway Integration
 
@@ -58,10 +73,10 @@ Skills can also be fetched directly from the MDLC MCP Gateway (`mcp.mdlc.ai`) us
 
 | Tier | Price | Skills | CyberOps |
 |------|-------|--------|----------|
-| FREE | $0/mo | /mdlc-init, /research, /kernel, /deploy | -- |
-| SOLO | $49/mo | All 6 skills | RECON (50 targets) |
-| TEAM | $199/mo | All 6 skills | RECON (50 targets) |
-| ENTERPRISE | $799+/mo | All 6 skills | SENTINEL (500 targets) |
+| FREE | $0/mo | 9 skills (core + free expert) | -- |
+| SOLO | $49/mo | All 14 skills | RECON (50 targets) |
+| TEAM | $199/mo | All 14 skills | RECON (50 targets) |
+| ENTERPRISE | $799+/mo | All 14 skills | SENTINEL (500 targets) |
 
 [Subscribe at mdlc.ai](https://mdlc.ai/#pricing)
 
