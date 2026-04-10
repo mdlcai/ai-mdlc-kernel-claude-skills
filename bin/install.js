@@ -8,7 +8,7 @@ const SKILLS_DIR = path.join(__dirname, '..', 'skills');
 const TARGET_DIR = path.join(os.homedir(), '.claude', 'skills');
 
 const ALL_SKILLS = [
-  'mdlc-init', 'research', 'kernel', 'deploy', 'cyberops', 'report',
+  'mdlc-init', 'research', 'kernel', 'deploy',
   'architect', 'mcp-builder', 'edge-expert', 'secure-code',
   'supabase', 'test', 'optimize', 'migrate',
 ];
@@ -38,13 +38,13 @@ function isInstalled(name) {
 function listSkills() {
   console.log('\nAvailable MDLC skills:\n');
   console.log('  Core:');
-  for (const name of ALL_SKILLS.slice(0, 6)) {
+  for (const name of ALL_SKILLS.slice(0, 4)) {
     const source = findSkillSource(name);
     const status = isInstalled(name) ? ' [installed]' : '';
     console.log(`    /${name}${status}${source ? '' : ' (missing)'}`);
   }
   console.log('\n  Expert:');
-  for (const name of ALL_SKILLS.slice(6)) {
+  for (const name of ALL_SKILLS.slice(4)) {
     const source = findSkillSource(name);
     const status = isInstalled(name) ? ' [installed]' : '';
     console.log(`    /${name}${status}${source ? '' : ' (missing)'}`);
@@ -117,8 +117,6 @@ Core Skills:
   /research     Generate RESEARCH.md blueprints
   /kernel       Query MDLC kernel documentation
   /deploy       Deploy Cloudflare Workers
-  /cyberops     Launch security scans (SOLO+)
-  /report       Generate scan PDF reports (SOLO+)
 
 Expert Skills:
   /architect    System architecture from RESEARCH.md

@@ -8,7 +8,7 @@ Claude Code slash commands for the [MDLC.AI](https://mdlc.ai) platform — the M
 npx @mdlc/claude-skills install
 ```
 
-This installs all 14 MDLC skills to `~/.claude/skills/`, making them available as slash commands in Claude Code.
+This installs all 12 MDLC skills to `~/.claude/skills/`, making them available as slash commands in Claude Code.
 
 ## Why Use MDLC Skills?
 
@@ -17,7 +17,6 @@ MDLC skills give your AI coding agent structured workflows for building software
 - **Build faster** — `/research` scaffolds a complete project blueprint in minutes
 - **Stay on methodology** — `/kernel` pulls the right MDLC docs into your conversation
 - **Ship confidently** — `/deploy` runs pre-flight checks before deploying
-- **Scan for vulnerabilities** — `/cyberops` launches security scans without leaving your terminal
 - **Design with expertise** — `/architect`, `/edge-expert`, `/supabase` bring domain knowledge into every decision
 
 ## Core Skills
@@ -28,14 +27,12 @@ MDLC skills give your AI coding agent structured workflows for building software
 | `/research` | FREE | Generate RESEARCH.md blueprints using the MDLC wizard |
 | `/kernel` | FREE | Search and retrieve MDLC kernel documentation |
 | `/deploy` | FREE | Deploy Cloudflare Workers with pre-flight checks |
-| `/cyberops` | SOLO+ | Launch and monitor CyberOps security scans |
-| `/report` | SOLO+ | Generate PDF reports from scan findings |
 
 ## Expert Skills
 
 | Skill | Tier | Description |
 |-------|------|-------------|
-| `/architect` | FREE | System architecture from RESEARCH.md using MDLC BUILD.md methodology |
+| `/architect` | FREE | System architecture from RESEARCH.md using MDLC methodology |
 | `/mcp-builder` | SOLO+ | Build custom MCP servers — scaffolding, auth, tool definitions |
 | `/edge-expert` | FREE | Cloudflare Workers patterns — KV, R2, Durable Objects, caching, queues |
 | `/secure-code` | FREE | Secure coding review — OWASP top 10, auth patterns, input validation |
@@ -47,7 +44,7 @@ MDLC skills give your AI coding agent structured workflows for building software
 ## Commands
 
 ```bash
-npx @mdlc/claude-skills install              # Install all 14 skills
+npx @mdlc/claude-skills install              # Install all 12 skills
 npx @mdlc/claude-skills install research      # Install a specific skill
 npx @mdlc/claude-skills install architect     # Install an expert skill
 npx @mdlc/claude-skills update                # Update all skills to latest
@@ -56,7 +53,7 @@ npx @mdlc/claude-skills list                  # List available skills
 
 ## Setup
 
-1. **Get an API key** at [mdlc.ai/dashboard](https://mdlc.ai/dashboard/dashboard.html)
+1. **Get an API key** at [dashboard.mdlc.ai](https://dashboard.mdlc.ai)
 2. **Install skills:**
    ```bash
    npx @mdlc/claude-skills install
@@ -71,12 +68,12 @@ Skills can also be fetched directly from the MDLC MCP Gateway (`mcp.mdlc.ai`) us
 
 ## Subscription Tiers
 
-| Tier | Price | Skills | CyberOps |
-|------|-------|--------|----------|
-| FREE | $0/mo | 9 skills (core + free expert) | -- |
-| SOLO | $49/mo | All 14 skills | RECON (50 targets) |
-| TEAM | $199/mo | All 14 skills | RECON (50 targets) |
-| ENTERPRISE | $799+/mo | All 14 skills | SENTINEL (500 targets) |
+| Tier | Price | Skills |
+|------|-------|--------|
+| FREE | $0/mo | 9 skills (core + free expert) |
+| SOLO | $29/mo | All 12 skills |
+| TEAM | $99/mo | All 12 skills |
+| ENTERPRISE | $499/mo | All 12 skills |
 
 [Subscribe at mdlc.ai](https://mdlc.ai/#pricing)
 

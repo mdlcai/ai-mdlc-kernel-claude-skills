@@ -1,7 +1,7 @@
 {
   "name": "@mdlc/claude-skills",
   "version": "1.0.0",
-  "description": "Claude Code skills for the MDLC platform — install slash commands for project blueprints, kernel docs, deployment, and security scanning",
+  "description": "Claude Code skills for the MDLC platform — install slash commands for project blueprints, kernel docs, deployment, and expert workflows",
   "license": "MIT",
   "bin": {
     "mdlc-skills": "./bin/install.js"
